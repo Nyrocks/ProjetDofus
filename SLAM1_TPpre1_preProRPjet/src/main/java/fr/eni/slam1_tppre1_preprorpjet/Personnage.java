@@ -40,14 +40,35 @@ public class Personnage {
     }
 
     public void remettreZeroStats()
-    {
-        /*
-        Remettre les statistiques à zéro (sauf la statistique PV qui sera remise à 50).
-        Cette fonction rendra de nouveau disponible TOUS les points de compétence. 
-        */
+    { 
+        this.pv = this.pv - this.pv + 50;
+        this.sagesse = this.sagesse - this.sagesse;
+        this.force = this.force - this.force;       
+        this.intelligence = this.intelligence - this.intelligence;
+        this.agilite = this.agilite - this.agilite;
+        this.chance = this.chance - this.chance;
+        this.pointDeCompetence = (this.niveau-1)*5;
+        System.out.println(this.pv);
+        System.out.println(this.sagesse);
+        System.out.println(this.force);
+        System.out.println(this.intelligence);
+        System.out.println(this.agilite);
+        System.out.println(this.chance);
+        System.out.println(this.pointDeCompetence);
+        
     }
     public void affStats()
     {
+        System.out.println(this.nom);
+        System.out.println(this.classe);
+        System.out.println(this.niveau);
+        this.affPv();
+        this.affSages();
+        this.affIntel();
+        this.affForce();
+        this.affChanc();
+        this.affAgili();
+        this.affChanc();
         /*
         Cette fonction affiche la classe, le nom du personnage ainsi que toutes les statistiques.
         Vous pourrez vous aider des fonctions affX()que vous écrirez par la suite.
@@ -55,31 +76,37 @@ public class Personnage {
     }   
     public void affPv()
     {
-        // Affiche la statistique pv. 
+        System.out.println(this.pv);
     }
     public void affSages()
     {
-        // Affiche la statistique sagesse.
+        System.out.println(this.sagesse);
     }
     public void affIntel()
     {
-        // Affiche la statistique intelligence.
+        System.out.println(this.intelligence);  
     }
     public void affForce()
     {
-        // Affiche la statistique force.
+        System.out.println(this.force);
     }
     public void affChanc()
     {
-        // Affiche la statistique chance.
+        System.out.println(this.chance);
     }
     public void affAgili()
     {
-        // Affiche la statistique agilité.
+        System.out.println(this.agilite);
     }    
     
     public void affSorts()
     {
+        System.out.println("\n\n\n\n\n");
+        this.sortUn.affSort();
+        System.out.println("\n\n\n\n\n");
+        this.sortDeux.affSort();
+        System.out.println("\n\n\n\n\n");
+        this.sortTrois.affSort();
         /*
         Afficher les 3 sorts (sortUn, sortDeux, sortTrois) à l'aide de la fonction affSort (disponible dans la classe Sort).
         */
@@ -87,6 +114,9 @@ public class Personnage {
     
     public void affSortsCombat()
     {
+        this.sortUn.affDegatSort(1111,111,111,11);
+        this.sortDeux.affDegatSort(1111,111,111,11);
+        this.sortTrois.affDegatSort(1111,111,111,11);
         /*
         Utiliser affDegatSort sur les trois sorts du personnage.
         Cela servira à afficher les dégâts des sorts en combat :
@@ -96,19 +126,46 @@ public class Personnage {
     
     public void augmenterStats(int nbAugmenter, int choixStats)
     {
-        /*
-        Augmente la statistiques de nbAugmenter choisies via choixStats :
-        -> 1 : Vitalité
-        -> 2 : Sagesse
-        -> 3 : Intelligence
-        -> 4 : Force
-        -> 5 : Chance
-        -> 6 : Agilité
+        while (nbAugmenter >= 0){
+        if (choixStats == 1){
+            System.out.println("Combien de points voulez vous augmenter ? : \n");
+         choixStats += this.pv;   
+         System.out.println(this.pv);
+        }
+        if (choixStats == 2){
+            System.out.println("Combien de points voulez vous augmenter ? : \n");
+         choixStats += this.sagesse; 
+         System.out.println(this.sagesse);
+        }
+        if (choixStats == 3){
+            System.out.println("Combien de points voulez vous augmenter ? : \n");
+         choixStats += this.intelligence;  
+         System.out.println(this.intelligence);
+        }
+        if (choixStats == 4){
+            System.out.println("Combien de points voulez vous augmenter ? : \n");
+         choixStats += this.force;
+         System.out.println(this.force);
+        }
+        if (choixStats == 5){
+            System.out.println("Combien de points voulez vous augmenter ? : \n");
+         choixStats += this.chance;
+         System.out.println(this.chance);
+        }
+        if (choixStats == 6){
+            System.out.println("Combien de points voulez vous augmenter ? : \n");
+         choixStats += this.agilite;  
+         System.out.println(this.agilite);
+        }
+        if (choixStats > nbAugmenter){
+            System.out.println("Pas assez de points\n");
+        }
+            }
         
-        Dépense autant de points de compétence qu'une statistique a été augmentée.
+       /* Dépense autant de points de compétence qu'une statistique a été augmentée.
         /!\ Attention, on ne peut pas dépenser les points que nous n'avons pas.
-        Dans ce cas, il faudra afficher "Pas assez de point".
-        */   
+        Dans ce cas, il faudra afficher "Pas assez de point".*/
+          
     }
 
     public String getNom() {

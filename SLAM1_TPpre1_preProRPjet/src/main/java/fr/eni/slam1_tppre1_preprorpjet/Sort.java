@@ -21,7 +21,13 @@ public class Sort {
     }
 
     public void affSort()
-    {
+    {   
+        System.out.println(nom);
+        System.out.println(degatMin);
+        System.out.println(degatMax);
+        System.out.println(portee);
+        System.out.println(element);
+        System.out.println(critique + "%");
         /*
         Affiche tous les attributs d'un objet de classe Sort.
         /!\ Attention, on affichera l'attribut critique en pourcentage.
@@ -30,6 +36,27 @@ public class Sort {
     
     public void affDegatSort(int feu, int ter, int eau, int air)
     {
+        
+        if(this.element == "feu"){
+            int degmax = calculDegat(feu,this.degatMax);
+            int degmin = calculDegat(feu,this.degatMin);
+            System.out.println("feu : " + degmin + "-" + degmax + "(CC : " + degmin*2 +"-"+degmax*2+ ")");
+        }
+        if (this.element == "ter"){
+             int degmin = calculDegat(ter,this.degatMin); 
+             int degmax = calculDegat(ter,this.degatMax);
+             System.out.println("feu : " + degmin + "-" + degmax + "(CC : " + degmin*2 +"-"+degmax*2+ ")");    
+        }
+        if (this.element == "eau"){
+            int degmin = calculDegat(eau,this.degatMin); 
+            int degmax = calculDegat(eau,this.degatMax);
+            System.out.println("feu : " + degmin + "-" + degmax + "(CC : " + degmin*2 +"-"+degmax*2+ ")");
+        }
+        if (this.element == "air"){
+            int degmin = calculDegat(air,this.degatMin);
+            int degmax = calculDegat(air,this.degatMax);
+            System.out.println("feu : " + degmin + "-" + degmax + "(CC : " + degmin*2 +"-"+degmax*2+ ")");
+        }
         /*
         Affiche tous les dégât d'un sort en combat (dégâts avec et sans critique).
         Les dégâts en critique valent dégâts * 2.
@@ -44,7 +71,14 @@ public class Sort {
     }
     public int calculDegat(int stats, int degat)
     {
+        return degat + degat * (stats/100);
         // Retourne les dégât totaux -> degat + degat * (stats/100)
-        return 0;
+        
+    }
+     public int calculDegatCritique(int stats, int degat)
+    {
+        return degat * degat * (stats/100);
+        // Retourne les dégât totaux -> degat + degat * (stats/100)
+        
     }
 }
